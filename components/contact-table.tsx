@@ -3,6 +3,7 @@ import React from "react";
 import { formatDate } from "@/lib/utils"; 
 import { Contact } from '../app/generated/prisma/index';
 import { Prisma } from "@prisma/client";
+import { DeleteButton, EditButton } from './buttons';
 
 const ContactTable = async () => {
   const contacts = await getContacts();
@@ -25,7 +26,10 @@ const ContactTable = async () => {
             <td className="py-3 px-6">{contact.phone}</td>
             <td className="py-3 px-6">
               {formatDate(contact.createdAt.toString())}</td>
-            <td></td>
+            <td className="flex justify-center gap-1 py-3">
+              <EditButton/>
+              <DeleteButton/>
+            </td>
           </tr>
         ))}
       </tbody>
