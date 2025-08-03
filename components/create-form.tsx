@@ -1,9 +1,13 @@
+"use client"
+
 import { saveContact } from "@/lib/actions";
+import { useFormState } from "react-dom";
 
 const CreateForm = () => {
+    const [state, formAction] = useFormState(saveContact,null);
   return (
     <div>
-        <form action={saveContact}>
+        <form action={formAction}>
             <div className="mb-5">
                 <label 
                 htmlFor="name"
