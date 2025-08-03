@@ -17,5 +17,14 @@ export const saveContact = async(formData : FormData) => {
             Error: validatedFields.error.flatten().fieldErrors
         }
     }
-    
+    try {
+        await prisma.contact.create({
+            data:{
+                name : validatedFields.data.name,
+                phone : validatedFields.data.phone,
+            }
+        })
+    } catch (error) {
+        return {message : "Failed to create contact"}
+    }
  };
