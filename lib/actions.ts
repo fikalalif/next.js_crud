@@ -5,13 +5,14 @@ import {number, z} from "zod";
 import { prisma } from "@/lib/prisma";
 import { error } from "console";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 
 const ContactSchema =z.object({
     name: z.string().min(6),
     phone: z.string().min(11),
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const saveContact = async(prevState: any, formData : FormData) => { 
     const validatedFields = ContactSchema.safeParse( Object.fromEntries(formData.entries()))
     if(!validatedFields.success){
@@ -27,7 +28,7 @@ export const saveContact = async(prevState: any, formData : FormData) => {
             }
         })
     } catch (error) {
-        return {message : "Failed to create contact"};
+        return {message : "Failed to create contact"}
     }
 
     revalidatePath("/contacts");
