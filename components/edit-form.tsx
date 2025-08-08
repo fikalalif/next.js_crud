@@ -1,12 +1,14 @@
 "use client"
 
-import { saveContact } from "@/lib/actions";
+import { updateContact } from "@/lib/actions";
 // import { useFormState } from "react-dom";
 import { useActionState } from "react";
 import { SubmitButton } from "./buttons";
+import type { Contact } from "@prisma/client";
 
-const UpdateForm = () => {
-    const [state, formAction] = useActionState(saveContact,null);
+const UpdateForm = ({contact}: {contact : Contact}) => {
+    const UpdateContactWithId = updateContact.bind(null, contact.id)
+    const [state, formAction] = useActionState(UpdateContactWithId,null);
   return (
     <div>
         <form action={formAction}>
@@ -24,6 +26,7 @@ const UpdateForm = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm
                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="full name.."
+                defaultValue={contact.name}
                 />
                 <div id="name-error" aria-live="polite" aria-atomic = "true" >
                     <p className="mt-2 text-sm text-red-500"> {state?.Error?.name}</p>
@@ -44,6 +47,7 @@ const UpdateForm = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-sm
                 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="phone number.."
+                defaultValue={contact.phone}
                 />
                 <div id="phone-error" aria-live="polite" aria-atomic = "true" >
                     <p className="mt-2 text-sm text-red-500"> {state?.Error?.phone}</p>
