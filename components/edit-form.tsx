@@ -5,7 +5,7 @@ import { saveContact } from "@/lib/actions";
 import { useActionState } from "react";
 import { SubmitButton } from "./buttons";
 
-const CreateForm = () => {
+const UpdateForm = () => {
     const [state, formAction] = useActionState(saveContact,null);
   return (
     <div>
@@ -54,10 +54,10 @@ const CreateForm = () => {
                 <p className="mt-2 text-sm text-red-500"> {state?.message}</p>
             </div>
 
-            <SubmitButton label= "save"/>
+            <SubmitButton label= "update"/>
         </form>
     </div>
   )
 }
 
-export default CreateForm;
+export default UpdateForm;

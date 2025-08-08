@@ -33,4 +33,4 @@ export const saveContact = async(prevState: any, formData : FormData) => {
 
     revalidatePath("/contacts");
     redirect("/contacts");
- };
+ }; 
