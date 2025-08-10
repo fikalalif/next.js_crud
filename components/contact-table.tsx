@@ -1,12 +1,16 @@
 import { getContacts } from "@/lib/data";
 import React from "react";
 import { formatDate } from "@/lib/utils"; 
-import { Contact } from '../app/generated/prisma/index';
-import { Prisma } from "@prisma/client";
 import { DeleteButton, EditButton } from './buttons';
 
-const ContactTable = async () => {
-  const contacts = await getContacts();
+const ContactTable = async ({
+  query,
+  currentPage,
+}:{
+  query : string;
+  currentPage : number;
+}) => {
+  const contacts = await getContacts(query,currentPage);
   return (
     <table className="w-full text-sm texl-left text-gray-500">
       <thead className="text-sm text-gray-700 uppercase bg-gray-50">
