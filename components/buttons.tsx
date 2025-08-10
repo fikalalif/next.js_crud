@@ -38,7 +38,7 @@ export const DeleteButton = ({id}:{id : string}) =>{
 }
 
 export const SubmitButton = ({label } : {label : string}) => { 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+    
     const {pending} = useFormStatus();
     const classname = clsx("text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-sm text-sm w-full px-5 py-3 text-center",
     {
