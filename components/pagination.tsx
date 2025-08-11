@@ -50,6 +50,37 @@ const Pagination = ({totalPages} : {totalPages : number}) => {
 
     }
 
+    const PaginationArrow = ({
+        href,
+        direction,
+        isDisable,
+    }:{
+        href : string,
+        direction : "left" | "right";
+        isDisable : boolean
+    }) =>{
+
+        const className = clsx("flex h-10 w-10 items-center justify-center text-sm border",
+            {
+                "pointer-events-none text-gray-300" : isDisable,
+                "hover:bg-gray-100": !isDisable,
+                "mr-2": direction === "left",
+                "ml-2": direction === "right"
+            }
+        );
+        const icon = direction === "left"?(
+            <HiChevronLeft size={20}/>
+        ):(
+            <HiChevronRight size={20}/>
+        );
+
+        return isDisable?(
+            <div className={className}>{icon}</div>
+        ):(
+            <Link href={href} className={className}>{icon}</Link>
+        );
+    }
+
   return (
     <div>Pagination</div>
   )
