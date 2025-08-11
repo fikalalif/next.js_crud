@@ -6,3 +6,7 @@ export const formatDate = (dateStr : string) => {
     });
     return formatter.format(date)
 }
+
+export const generatePagination = () => { 
+    
+ };
