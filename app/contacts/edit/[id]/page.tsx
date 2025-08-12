@@ -3,23 +3,24 @@ import React from 'react'
 import { getContactsbyId } from '@/lib/data'
 import { notFound } from 'next/navigation';
 
-const UpdateContactPage = async ({params} : {params : {id : string}}) => {
+interface UpdateContactPageProps {
+  params: { id: string };
+}
+
+const UpdateContactPage = async ({ params }: UpdateContactPageProps) => {
   const id = params.id;
   const contact = await getContactsbyId(id);
 
-  if(!contact){
+  if (!contact) {
     notFound();
   }
 
   return (
     <div className='max-w-md mx-auto mt-5'>
-        <h1 className='text-2xl text-center mb-2'>
-          Update Contact
-        </h1>
-
-        <UpdateForm contact = {contact}/>
+      <h1 className='text-2xl text-center mb-2'>Update Contact</h1>
+      <UpdateForm contact={contact} />
     </div>
-  )
-}
+  );
+};
 
-export default UpdateContactPage
+export default UpdateContactPage;
