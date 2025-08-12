@@ -2,9 +2,9 @@ import UpdateForm from '@/components/edit-form'
 import React from 'react'
 import { getContactsbyId } from '@/lib/data'
 import { notFound } from 'next/navigation'
-import type { AppPageProps } from '../../../../global' // path ke global.d.ts
 
-const UpdateContactPage = async ({ params }: AppPageProps<{ id: string }>) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const UpdateContactPage = async ({ params }: any) => {
   const id = params.id;
   const contact = await getContactsbyId(id);
 
@@ -19,5 +19,6 @@ const UpdateContactPage = async ({ params }: AppPageProps<{ id: string }>) => {
     </div>
   );
 };
+
 
 export default UpdateContactPage;
