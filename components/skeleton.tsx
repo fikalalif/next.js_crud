@@ -10,7 +10,7 @@ export const TableSkeleton = () => {
                   <th className="py-3 px-6 text-center">Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="animate-pulse">
                 
                   <tr className="bg-amber-50 border-b">
                     <td className="py-3 px-6">
@@ -26,7 +26,8 @@ export const TableSkeleton = () => {
                         <div className="h-4 w-32 rounded bg-gray-100"></div>
                     </td>
                     <td className="flex justify-center gap-1 py-3">
-                      
+                        <div className="h-7 w-7 rounded-sm bg-gray-100"></div>
+                        <div className="h-7 w-7 rounded-sm bg-gray-100"></div>
                     </td>
                   </tr>
                 
