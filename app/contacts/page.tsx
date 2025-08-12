@@ -4,6 +4,8 @@ import Search from '@/components/search'
 import React from 'react'
 import { getContactsPages } from '@/lib/data'
 import Pagination from '@/components/pagination'
+import { TableSkeleton } from '@/components/skeleton'
+import { Suspense } from 'react'
 
 const Contacts = async({
   searchParams,
@@ -25,7 +27,9 @@ const Contacts = async({
            <Search/>
            <CreateButton/>
         </div>
-         <ContactTable query={query} currentPage = {currentPage} />
+        <Suspense key={query + currentPage} fallback={<TableSkeleton/>}>
+          <ContactTable query={query} currentPage = {currentPage} />
+        </Suspense>
          <Pagination totalPages={totalPages}/>
     </div>
   )
