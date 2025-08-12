@@ -1,10 +1,12 @@
 import { prisma } from '@/lib/prisma';
+import { resolve } from 'path';
 
 const ITEM_PER_PAGE = 5;
 
 export const getContacts = async (query : string, currentPage : number) => {
     const offset = (currentPage - 1 ) * ITEM_PER_PAGE; 
     try{
+        await new Promise((resolve)=> setTimeout(resolve,3000));
         const contacts = await prisma.contact.findMany({
             skip: offset,
             take: ITEM_PER_PAGE,
@@ -45,6 +47,7 @@ export const getContacts = async (query : string, currentPage : number) => {
  export const getContactsPages = async (query : string, currentPage : number) => {
     
     try{
+        
         const contacts = await prisma.contact.count({
             
             where:{
