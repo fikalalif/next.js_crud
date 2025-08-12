@@ -1,13 +1,10 @@
 import UpdateForm from '@/components/edit-form'
 import React from 'react'
 import { getContactsbyId } from '@/lib/data'
-import { notFound } from 'next/navigation';
+import { notFound } from 'next/navigation'
+import type { AppPageProps } from '../../../../global' // path ke global.d.ts
 
-interface UpdateContactPageProps {
-  params: { id: string };
-}
-
-const UpdateContactPage = async ({ params }: UpdateContactPageProps) => {
+const UpdateContactPage = async ({ params }: AppPageProps<{ id: string }>) => {
   const id = params.id;
   const contact = await getContactsbyId(id);
 
