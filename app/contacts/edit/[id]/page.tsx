@@ -3,9 +3,12 @@ import React from 'react'
 import { getContactsbyId } from '@/lib/data'
 import { notFound } from 'next/navigation'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const UpdateContactPage = async ({ params }: any) => {
-  const id = params.id;
+const UpdateContactPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) => {
+  const { id } = await params; // ✅ tunggu Promise
   const contact = await getContactsbyId(id);
 
   if (!contact) {
@@ -19,6 +22,5 @@ const UpdateContactPage = async ({ params }: any) => {
     </div>
   );
 };
-
 
 export default UpdateContactPage;
