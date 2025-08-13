@@ -1,7 +1,16 @@
-export default function Home() {
+import Contacts from "./contacts/page";
+
+export default function Home({
+  searchParams,
+}: {
+  searchParams?: { query?: string; page?: string };
+}) {
+  const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
+
   return (
-    <>
-      <h1 className="title text-2xl bg-amber-500">sangkul</h1>
-    </>
+    <main>  
+      <Contacts query={query} currentPage={currentPage} showActions={false}/>
+    </main>
   );
 }
